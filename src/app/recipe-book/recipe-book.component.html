@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h3>Recipe Book</h3>
+    </div>
+  </div>
+  <div class="row" *ngFor="let recipe of recipes">
+    <div class="col">
+      <div class="row">Name: {{ recipe.name }}</div>
+      <div class="row">Ingredients:</div>
+      <div class="row" *ngFor="let ingredient of recipe.ingredients"> 
+        <div class="col-8">{{ ingredient.name }}</div>
+        <div class="col-4">Qty: {{ ingredient.qty }}</div>
+      </div>
+      <div class="row">Instructions: {{ recipe.instructions }}</div>
+      <hr>
+    </div>
+  </div>
+</div>

@@ -6,5 +6,26 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+
 }
+
+/*
+*
+* Root: General Component Container
+* |
+* |- Header: Component Controller for 2 views
+* |
+* |- Shopping List: Feature
+* |--|
+* |--|- Shopping List: Component
+* |--|- Shopping List Edit: Component
+* |--|- Ingredient: Model
+* |
+* |- Recipe Book: Feature
+* |--|
+* |--|- Recipe List: Component
+* |--|- Recipe Item: Component
+* |--|- Recipe Detail: Component
+* |--|- Recipe: Model
+*
+*/

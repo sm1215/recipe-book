@@ -1,0 +1,17 @@
+<p>{{ visiblePage }}</p>
+<nav>
+  <button
+    class="btn btn-primary"
+    (click)="changeRoute($event)"
+    data-page="recipe-book">Recipe Book</button>
+  <button
+    class="btn btn-primary"
+    (click)="changeRoute($event)"
+    data-page="shopping-list">Shopping List</button>
+</nav>
+<div [ngSwitch]="route">
+  <p *ngSwitchCase="'index'">Hello</p>
+  <app-recipe-book *ngSwitchCase="'recipe-book'"></app-recipe-book>
+  <app-shopping-list *ngSwitchCase="'shopping-list'"></app-shopping-list>  
+  <p *ngSwitchDefault>404</p>
+</div>
