@@ -8,40 +8,49 @@ import { Ingredient } from '../ingredient.interface';
   styleUrls: ['./recipe-book.component.css']
 })
 export class RecipeBookComponent implements OnInit {
+  lastId = 0;
   recipes: Array<Recipe> = [];
+  samples = [
+    {
+      name: 'Grilled Cheese',
+      ingredients: [
+        { name: 'Bread', qty: 2 },
+        { name: 'Cheese', qty: 1 }
+      ],
+      instructions: 'Butter dat bread. Put some cheese in the middle. Grill dat breaad.'
+    },
+    {
+      name: 'Fried Egg',
+      ingredients: [
+        { name: 'Egg', qty: 1 }
+      ],
+      instructions: 'Go embarass urself. Crack egg. Put on face. No-rinse, repeat.'
+    },
+    {
+      name: 'Delicious OJ',
+      ingredients: [
+        { name: 'Orange', qty: 1 },
+        { name: 'Bannanaa', qty: 3 }
+      ],
+      instructions: 'Take these bannanas and go.'
+    }
+  ];
 
   constructor() {
-    this.recipes.push(
-      <Recipe>{
-        id: 0,
-        name: 'Grilled Cheese',
-        ingredients: [
-          <Ingredient>{ name: 'Bread', qty: 2 },
-          <Ingredient>{ name: 'Cheese', qty: 1 }
-        ],
-        instructions: 'Butter dat bread. Put some cheese in the middle. Grill dat breaad.'
-      },
-      <Recipe>{
-        id: 1,
-        name: 'Fried Egg',
-        ingredients: [
-          <Ingredient>{ name: 'Egg', qty: 1 },
-        ],
-        instructions: 'Go embarass urself. Crack egg. Put on face. No-rinse, repeat.'
-      },
-      <Recipe>{
-        id: 2,
-        name: 'Delicious OJ',
-        ingredients: [
-          <Ingredient>{ name: 'Orange', qty: 1 },
-          <Ingredient>{ name: 'Bannanaa', qty: 3 }
-        ],
-        instructions: 'Take these bannanas and go.'
-      }
-    );
+    this.samples.forEach((recipe) => {
+      this.addRecipe(recipe);
+    });
+  }
 
-    console.log(this);
+  setupNewId() {
+    const lastId = this.lastId;
+    this.lastId++;
+    return lastId;
+  }
 
+  addRecipe(recipe: Recipe) {
+    recipe.id = this.setupNewId();
+    this.recipes.push(recipe);
   }
 
   ngOnInit() {
