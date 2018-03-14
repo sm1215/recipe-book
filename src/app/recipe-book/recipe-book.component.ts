@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+
 import { Recipe } from '../recipe.interface';
 import { Ingredient } from '../ingredient.interface';
+
+import { EditRecipeComponent } from './edit-recipe/edit-recipe.component';
 
 @Component({
   selector: 'app-recipe-book',
@@ -8,7 +11,7 @@ import { Ingredient } from '../ingredient.interface';
   styleUrls: ['./recipe-book.component.css']
 })
 export class RecipeBookComponent implements OnInit {
-  lastId = 0;
+  static lastId = 0;
   recipes: Array<Recipe> = [];
   samples = [
     {
@@ -38,19 +41,29 @@ export class RecipeBookComponent implements OnInit {
 
   constructor() {
     this.samples.forEach((recipe) => {
-      this.addRecipe(recipe);
+      this.addKnownRecipe(recipe);
     });
   }
 
-  setupNewId() {
+  static setupNewId() {
     const lastId = this.lastId;
     this.lastId++;
     return lastId;
   }
 
-  addRecipe(recipe: Recipe) {
-    recipe.id = this.setupNewId();
+  addKnownRecipe(recipe: Recipe) {
+    recipe.id = RecipeBookComponent.setupNewId();
     this.recipes.push(recipe);
+  }
+
+  onAddRecipe() {
+    // Need to have access to EditRecipeComponent.addRecipe()
+    // Options:
+    // 1) Change addRecipe to a static method.
+    //   --> Does this even make sense for the class structure?
+    // 2) Instantiate a new instance of EditRecipeComponent and make the call from that.
+    //   --> It's easy to create components in HTML, but how in TS?
+
   }
 
   ngOnInit() {
