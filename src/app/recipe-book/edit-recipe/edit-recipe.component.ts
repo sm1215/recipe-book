@@ -3,6 +3,7 @@ import { Recipe } from '../../recipe.interface';
 import { Ingredient } from '../../ingredient.interface';
 
 import { RecipeBookComponent } from '../recipe-book.component';
+import { log } from 'util';
 
 @Component({
   selector: 'app-edit-recipe',
@@ -12,25 +13,25 @@ import { RecipeBookComponent } from '../recipe-book.component';
 
 // This component should provide functionality for editing an existing recipe or adding a new one.
 export class EditRecipeComponent implements OnInit {
-  id: number;
-  name: string;
-  ingredients: Array<Ingredient>;
-  instructions: string;
+  // id: number;
+  // name: string;
+  // ingredients: Array<Ingredient>;
+  // instructions: string;
 
-  // constructor(recipe?: Recipe) {
-  constructor() { }
-
+  constructor() {
+    // if (recipe) {
+    //   this.id = recipe.id;
+    //   this.name = recipe.name;
+    //   this.ingredients = recipe.ingredients;
+    //   this.instructions = recipe.instructions;
+    // }
+  }
   setRecipe(recipe?: Recipe) {
     if (recipe) {
-      this.id = recipe.id;
-      this.name = recipe.name;
-      this.ingredients = recipe.ingredients;
-      this.instructions = recipe.instructions;
-    } else {
-      this.id = RecipeBookComponent.setupNewId();
-      this.name = 'Enter a name';
-      this.ingredients = [];
-      this.instructions = 'Enter some instructions';
+      // this.id = recipe.id;
+      // this.name = recipe.name;
+      // this.ingredients = recipe.ingredients;
+      // this.instructions = recipe.instructions;
     }
   }
 

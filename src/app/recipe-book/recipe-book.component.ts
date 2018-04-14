@@ -11,7 +11,7 @@ import { EditRecipeComponent } from './edit-recipe/edit-recipe.component';
   styleUrls: ['./recipe-book.component.css']
 })
 export class RecipeBookComponent implements OnInit {
-  static lastId = 0;
+  lastId = 0;
   recipes: Array<Recipe> = [];
   samples = [
     {
@@ -45,24 +45,32 @@ export class RecipeBookComponent implements OnInit {
     });
   }
 
-  static setupNewId() {
+  setupNewId() {
     const lastId = this.lastId;
     this.lastId++;
     return lastId;
   }
 
   addKnownRecipe(recipe: Recipe) {
-    recipe.id = RecipeBookComponent.setupNewId();
+    recipe.id = this.setupNewId();
     this.recipes.push(recipe);
   }
 
   onAddRecipe() {
-    // Need to have access to EditRecipeComponent.addRecipe()
-    // Options:
-    // 1) Change addRecipe to a static method.
-    //   --> Does this even make sense for the class structure?
-    // 2) Instantiate a new instance of EditRecipeComponent and make the call from that.
-    //   --> It's easy to create components in HTML, but how in TS?
+    const newRecipe = {
+      id: this.setupNewId(),
+      name: '',
+      ingredients: [],
+      instructions: ''
+    };
+    const editRecipeComponent = new EditRecipeComponent();
+    editRecipeComponent.setRecipe(<Recipe>newRecipe);
+    // editRecipeComponent.setRecipe({
+    //   id: this.setupNewId(),
+    //   name: '',
+    //   ingredients: [],
+    //   instructions: ''
+    // });
 
   }
 
