@@ -8,6 +8,9 @@
         style="cursor: pointer;"
         *ngFor="let ingredient of ingredients"
       >
+        <span class="pull-left">
+          <img class="ingredient-thumb" src="{{ ingredient.imagePath }}" alt="{{ ingredient.name }}">
+        </span>
         {{ ingredient.name }} ({{ ingredient.amount }})
       </a>
     </ul>
