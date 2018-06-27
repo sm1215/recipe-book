@@ -9,14 +9,29 @@ import { Recipe } from '../recipe.model';
 export class RecipeListComponent implements OnInit {
   recipes: Recipe[] = [
     new Recipe(
-      'A Test Recipe',
-      'This is simply a test',
-      'https://www.nps.gov/subjects/camping/images/recipe_1.jpg?maxwidth=1200&maxheight=1200&autorotate=false'
+      'Fruit and Mushroom Mix',
+      'Enter description info',
+      './assets/images/recipes/fruit-and-mushroom-mix.png'
     ),
     new Recipe(
-      'A Test Recipe',
-      'This is simply a test',
-      'https://www.nps.gov/subjects/camping/images/recipe_1.jpg?maxwidth=1200&maxheight=1200&autorotate=false'
+      'Meat and Mushroom Skewer',
+      'Enter description info',
+      './assets/images/recipes/meat-and-mushroom-skewer.png'
+    ),
+    new Recipe(
+      'Meat Skewer',
+      'Enter description info',
+      './assets/images/recipes/meat-skewer.png'
+    ),
+    new Recipe(
+      'Mushroom Skewer',
+      'Enter description info',
+      './assets/images/recipes/mushroom-skewer.png'
+    ),
+    new Recipe(
+      'Simmered Fruit',
+      'Enter description info',
+      './assets/images/recipes/simmered-fruit.png'
     )
   ];
 
