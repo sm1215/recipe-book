@@ -44,7 +44,7 @@ export class RecipeListComponent implements OnInit {
     this.viewRecipeDetails.emit(this.recipes[0]);
   }
 
-  onViewRecipeDetails(recipe: Recipe) {
+  onRecipeSelected(recipe: Recipe) {
     this.viewRecipeDetails.emit(recipe);
   }
 
