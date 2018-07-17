@@ -7,6 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
+  route = '';
+
+  onChangeRoute(route: string) {
+    this.route = route;
+  }
 }
 
 /*
