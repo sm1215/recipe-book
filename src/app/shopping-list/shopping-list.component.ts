@@ -13,16 +13,24 @@ import { Ingredient } from '../shared/ingredient.model';
   `]
 })
 export class ShoppingListComponent implements OnInit {
+
+  imageBasePath = '../assets/images/ingredients/';
+
   ingredients: Ingredient[] = [
-    new Ingredient('Apple', 5, '../assets/images/ingredients/apple.png'),
-    new Ingredient('Hylian Shroom', 10, '../assets/images/ingredients/hylian-shroom.png'),
-    new Ingredient('Raw Bird Drumstick', 2, '../assets/images/ingredients/raw-bird-drumstick.png'),
-    new Ingredient('Raw Meat', 7, '../assets/images/ingredients/raw-meat.png')
+    new Ingredient('Apple', 5, `${this.imageBasePath}apple.png`),
+    new Ingredient('Hylian Shroom', 10, `${this.imageBasePath}hylian-shroom.png`),
+    new Ingredient('Raw Bird Drumstick', 2, `${this.imageBasePath}raw-bird-drumstick.png`),
+    new Ingredient('Raw Meat', 7, `${this.imageBasePath}raw-meat.png`)
   ];
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onIngredientAdded (newIngredient: Ingredient) {
+    newIngredient.imagePath = `${this.imageBasePath}${newIngredient.imagePath}`;
+    this.ingredients.push(newIngredient);
   }
 
 }
