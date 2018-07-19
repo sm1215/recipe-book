@@ -15,14 +15,23 @@ export class ShoppingListService {
     return this.ingredients.slice();
   }
 
-  addIngredient({ name, amount, imagePath }) {
-    const newIngredient = { name, amount, imagePath: `${this.imageBasePath}${imagePath}` };
-    this.ingredients.push(newIngredient);
+  addIngredients(ingredients: Ingredient[]) {
+    ingredients.forEach((ingredient) => {
+      let imagePath = ingredient.imagePath;
+
+      // Sometimes the basePath can already be present
+      // Checking for that here
+      if (imagePath.split('/').length < 2) {
+        imagePath = `${this.imageBasePath}${imagePath}`;
+      }
+
+      const newIngredient = {
+        name: ingredient.name,
+        amount: ingredient.amount,
+        imagePath: imagePath
+      };
+      this.ingredients.push(newIngredient);
+    });
     this.ingredientsChanged.emit(this.ingredients.slice());
   }
 }
-
-
-// TODO:
-// Manage the shopping list ingredients
-// Add the "Add Ingredient" function here

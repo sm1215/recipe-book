@@ -26,7 +26,7 @@ export class ShoppingEditComponent implements OnInit {
     // This is extra and not part of the course examples
     const imagePath = 'apple.png';
     const newIngredient = new Ingredient(name, amount, imagePath);
-    this.shoppingListService.addIngredient(newIngredient);
+    this.shoppingListService.addIngredients([newIngredient]);
   }
 
 }
