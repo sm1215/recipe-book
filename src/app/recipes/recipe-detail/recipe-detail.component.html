@@ -32,7 +32,16 @@
 </div>
 <div class="row">
   <div class="col-xs-12">
-    Ingredients
-    <!-- <strong>Ingredients:&nbsp;</strong>{{ recipe.ingredients }} -->
+    <ul class="class-group">
+      <li 
+        class="list-group-item"
+        *ngFor="let ingredient of recipe.ingredients">
+          <img 
+            [src]="ingredient.imagePath" 
+            alt="{{ ingredient.name }}" 
+            class="img-responsive ingredient-image">
+          {{ ingredient.name }} ({{ ingredient.amount }})
+      </li>
+    </ul>
   </div>
 </div>

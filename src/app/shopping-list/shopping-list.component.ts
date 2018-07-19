@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Ingredient } from '../shared/ingredient.model';
+import { ShoppingListService } from './shopping-list.service';
 
 @Component({
   selector: 'app-shopping-list',
@@ -14,23 +15,17 @@ import { Ingredient } from '../shared/ingredient.model';
 })
 export class ShoppingListComponent implements OnInit {
 
-  imageBasePath = '../assets/images/ingredients/';
+  ingredients: Ingredient[] = [];
 
-  ingredients: Ingredient[] = [
-    new Ingredient('Apple', 5, `${this.imageBasePath}apple.png`),
-    new Ingredient('Hylian Shroom', 10, `${this.imageBasePath}hylian-shroom.png`),
-    new Ingredient('Raw Bird Drumstick', 2, `${this.imageBasePath}raw-bird-drumstick.png`),
-    new Ingredient('Raw Meat', 7, `${this.imageBasePath}raw-meat.png`)
-  ];
-
-  constructor() { }
+  constructor(private shoppingListService: ShoppingListService) { }
 
   ngOnInit() {
+    this.ingredients = this.shoppingListService.getIngredients();
+    this.shoppingListService.ingredientsChanged
+      .subscribe(
+        (updatedIngredients: Ingredient[]) => {
+          this.ingredients = updatedIngredients;
+        }
+      );
   }
-
-  onIngredientAdded (newIngredient: Ingredient) {
-    newIngredient.imagePath = `${this.imageBasePath}${newIngredient.imagePath}`;
-    this.ingredients.push(newIngredient);
-  }
-
 }
