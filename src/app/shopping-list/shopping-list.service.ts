@@ -19,7 +19,7 @@ export class ShoppingListService {
     ingredients.forEach((ingredient) => {
       let imagePath = ingredient.imagePath;
 
-      // Sometimes the basePath can already be present
+      // Sometimes the basePath isn't present
       // Checking for that here
       if (imagePath.split('/').length < 2) {
         imagePath = `${this.imageBasePath}${imagePath}`;

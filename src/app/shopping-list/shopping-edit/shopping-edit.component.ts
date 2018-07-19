@@ -28,5 +28,4 @@ export class ShoppingEditComponent implements OnInit {
     const newIngredient = new Ingredient(name, amount, imagePath);
     this.shoppingListService.addIngredients([newIngredient]);
   }
-
 }
